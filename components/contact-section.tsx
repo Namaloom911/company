@@ -1,12 +1,13 @@
 "use client"
 
 import type React from "react"
+
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -16,18 +17,30 @@ export function ContactSection() {
     service: "",
     message: "",
   })
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      service: "",
-      message: "",
-    })
-    alert("Thank you for your message! We'll get back to you soon.")
+    setIsLoading(true)
+
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    setIsLoading(false)
+    setIsSubmitted(true)
+
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      setIsSubmitted(false)
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        service: "",
+        message: "",
+      })
+    }, 3000)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -38,180 +51,181 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-32 bg-zinc-950">
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8">
-            Let's Start Your <span className="gradient-text-purple">Project</span>
+    <section id="contact" className="py-24 bg-gray-950">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <span className="text-white">Ready to</span>{" "}
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Get Started?
+            </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Ready to transform your digital presence? Get in touch with us today and let's discuss how we can help your
-            business grow.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Let's discuss your project and explore how we can help transform your vision into reality. Get in touch with
+            our team today.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {/* Contact Info */}
-          <div className="lg:col-span-1">
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-3xl font-semibold text-white mb-6">Get in Touch</h3>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  We're here to help you succeed. Reach out to us through any of these channels and we'll respond within
-                  24 hours.
-                </p>
-              </div>
-
-              <div className="space-y-8">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 w-14 h-14 glass rounded-xl flex items-center justify-center">
-                    <Mail className="w-7 h-7 text-purple-400" />
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-lg font-medium text-white">Email</div>
-                    <div className="text-gray-300 text-lg">hello@digivelopers.com</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 w-14 h-14 glass rounded-xl flex items-center justify-center">
-                    <Phone className="w-7 h-7 text-emerald-400" />
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-lg font-medium text-white">Phone</div>
-                    <div className="text-gray-300 text-lg">+1 (555) 123-4567</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 w-14 h-14 glass rounded-xl flex items-center justify-center">
-                    <MapPin className="w-7 h-7 text-orange-400" />
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-lg font-medium text-white">Office</div>
-                    <div className="text-gray-300 text-lg">San Francisco, CA</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="glass border-white/10">
-              <CardContent className="p-10">
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-white">Send us a message</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isSubmitted ? (
+                <div className="text-center py-8">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
+                  <p className="text-gray-300">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-lg font-medium text-white mb-3">
-                        Full Name *
-                      </label>
                       <Input
-                        id="name"
                         name="name"
-                        type="text"
-                        required
+                        placeholder="Your Name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-400 text-lg p-4 rounded-xl"
-                        placeholder="John Doe"
+                        required
+                        className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-purple-500"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-lg font-medium text-white mb-3">
-                        Email Address *
-                      </label>
                       <Input
-                        id="email"
                         name="email"
                         type="email"
-                        required
+                        placeholder="Your Email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-400 text-lg p-4 rounded-xl"
-                        placeholder="john@example.com"
+                        required
+                        className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-purple-500"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="company" className="block text-lg font-medium text-white mb-3">
-                        Company
-                      </label>
                       <Input
-                        id="company"
                         name="company"
-                        type="text"
+                        placeholder="Company Name"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-400 text-lg p-4 rounded-xl"
-                        placeholder="Your Company"
+                        className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-purple-500"
                       />
                     </div>
                     <div>
-                      <label htmlFor="service" className="block text-lg font-medium text-white mb-3">
-                        Service Interested In
-                      </label>
                       <select
-                        id="service"
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
-                        className="w-full bg-white/5 border border-white/20 text-white rounded-xl px-4 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        required
+                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 text-white rounded-md focus:border-purple-500 focus:outline-none"
                       >
-                        <option value="" className="bg-black">
-                          Select a service
-                        </option>
-                        <option value="web-development" className="bg-black">
-                          Web Development
-                        </option>
-                        <option value="ui-ux-design" className="bg-black">
-                          UI/UX Design
-                        </option>
-                        <option value="seo" className="bg-black">
-                          SEO Optimization
-                        </option>
-                        <option value="digital-marketing" className="bg-black">
-                          Digital Marketing
-                        </option>
-                        <option value="ai-consulting" className="bg-black">
-                          AI Consulting
-                        </option>
-                        <option value="automation" className="bg-black">
-                          Automation Solutions
-                        </option>
+                        <option value="">Select a Service</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="ui-ux-design">UI/UX Design</option>
+                        <option value="seo-optimization">SEO Optimization</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="ai-consulting">AI Consulting</option>
+                        <option value="automation">Automation Solutions</option>
+                        <option value="chatbot">Chatbot Development</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-lg font-medium text-white mb-3">
-                      Project Details *
-                    </label>
                     <Textarea
-                      id="message"
                       name="message"
-                      required
+                      placeholder="Tell us about your project..."
                       value={formData.message}
                       onChange={handleChange}
-                      rows={6}
-                      className="w-full bg-white/5 border-white/20 text-white placeholder:text-gray-400 text-lg p-4 rounded-xl"
-                      placeholder="Tell us about your project, goals, and timeline..."
+                      required
+                      rows={5}
+                      className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-purple-500"
                     />
                   </div>
 
                   <Button
                     type="submit"
-                    size="lg"
-                    className="w-full bg-white hover:bg-gray-100 text-black text-lg font-medium py-4 rounded-xl group transition-all duration-200"
+                    disabled={isLoading}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
-                    <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {isLoading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center">
+                        <Send className="w-5 h-5 mr-2" />
+                        Send Message
+                      </div>
+                    )}
                   </Button>
                 </form>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mr-4">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white">Email Us</h3>
+                    <p className="text-gray-300">hello@digivelopers.com</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
+
+            <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mr-4">
+                    <Phone className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white">Call Us</h3>
+                    <p className="text-gray-300">+1 (555) 123-4567</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center mr-4">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white">Visit Us</h3>
+                    <p className="text-gray-300">
+                      123 Innovation Street
+                      <br />
+                      Tech District, CA 94105
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-lg p-6 border border-purple-500/20">
+              <h3 className="text-xl font-semibold text-white mb-3">Ready to start your project?</h3>
+              <p className="text-gray-300 mb-4">
+                Book a free consultation call with our experts to discuss your requirements and get a custom quote.
+              </p>
+              <Button className="bg-white text-black hover:bg-gray-100 px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:scale-105">
+                Book Free Consultation
+              </Button>
+            </div>
           </div>
         </div>
       </div>

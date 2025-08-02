@@ -1,101 +1,143 @@
 "use client"
 
-import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ArrowUp } from "lucide-react"
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
   return (
-    <footer className="bg-black border-t border-white/10">
-      <div className="container mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <h3 className="text-3xl font-bold text-white mb-6">Digivelopers</h3>
-            <p className="text-gray-300 mb-8 max-w-md text-lg leading-relaxed">
-              Transforming businesses through innovative digital solutions, cutting-edge web development, and AI-powered
-              automation.
+    <footer className="bg-black border-t border-gray-800">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="col-span-1 md:col-span-2">
+            <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+              Digivelopers
+            </div>
+            <p className="text-gray-300 mb-6 max-w-md">
+              Transforming visions into digital reality through innovative technology, exceptional design, and strategic
+              thinking.
             </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors p-2 glass rounded-lg">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors p-2 glass rounded-lg">
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors p-2 glass rounded-lg">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors p-2 glass rounded-lg">
-                <Instagram className="w-6 h-6" />
-              </a>
+            <div className="flex space-x-4">
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-gray-700 text-gray-300 hover:bg-white/10 bg-transparent"
+              >
+                LinkedIn
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-gray-700 text-gray-300 hover:bg-white/10 bg-transparent"
+              >
+                Twitter
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-gray-700 text-gray-300 hover:bg-white/10 bg-transparent"
+              >
+                GitHub
+              </Button>
             </div>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-xl font-semibold text-white mb-6">Services</h4>
-            <ul className="space-y-4 text-gray-300">
+            <h3 className="font-semibold text-white mb-4">Services</h3>
+            <ul className="space-y-2">
               <li>
-                <a href="#" className="hover:text-white transition-colors text-lg">
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   Web Development
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors text-lg">
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   UI/UX Design
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors text-lg">
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   SEO Optimization
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors text-lg">
-                  Digital Marketing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors text-lg">
+                <button
+                  onClick={() => scrollToSection("services")}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   AI Consulting
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors text-lg">
-                  Automation
-                </a>
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Company */}
           <div>
-            <h4 className="text-xl font-semibold text-white mb-6">Contact</h4>
-            <ul className="space-y-4 text-gray-300">
-              <li className="flex items-center text-lg">
-                <Mail className="w-5 h-5 mr-3" />
-                hello@digivelopers.com
+            <h3 className="font-semibold text-white mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <button
+                  onClick={() => scrollToSection("about")}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  About Us
+                </button>
               </li>
-              <li className="text-lg">+1 (555) 123-4567</li>
-              <li className="text-lg">San Francisco, CA</li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("testimonials")}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  Testimonials
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  Contact
+                </button>
+              </li>
+              <li>
+                <button className="text-gray-300 hover:text-white transition-colors">Privacy Policy</button>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-lg">© {currentYear} Digivelopers. All rights reserved.</p>
-          <div className="flex space-x-8 mt-6 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white text-lg transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-lg transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-lg transition-colors">
-              Cookie Policy
-            </a>
-          </div>
+        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
+          <p className="text-gray-400 text-sm">© 2024 Digivelopers. All rights reserved.</p>
+          <Button
+            onClick={scrollToTop}
+            variant="outline"
+            size="sm"
+            className="border-gray-700 text-gray-300 hover:bg-white/10 mt-4 sm:mt-0 bg-transparent"
+          >
+            <ArrowUp className="w-4 h-4 mr-2" />
+            Back to Top
+          </Button>
         </div>
       </div>
     </footer>
