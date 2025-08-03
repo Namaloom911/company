@@ -1,85 +1,62 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 
-export function HeroSection() {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-
+export default function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Animated Gradient Rings */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 opacity-20 blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-15 blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 opacity-10 blur-3xl animate-pulse delay-2000"></div>
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
 
-      {/* Animated Gradient Ring */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative">
-          <div className="w-[600px] h-[600px] rounded-full border-4 border-transparent bg-gradient-to-r from-purple-500 via-pink-500 via-blue-500 to-yellow-500 animate-spin-slow opacity-30"></div>
-          <div className="absolute inset-4 w-[568px] h-[568px] rounded-full bg-black"></div>
-        </div>
-      </div>
-
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        {/* Main Heading */}
-        <div className="space-y-6">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
-              Breakthrough
-            </span>{" "}
-            <span className="text-white">AI from</span>
-            <br />
-            <span className="text-white">Vision to</span>{" "}
-            <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Reality
+      <div className="container mx-auto px-4 py-20 text-center relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-6 leading-tight">
+            Digital Solutions
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+              That Transform
             </span>
           </h1>
 
-          <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Digivelopers delivers cutting-edge digital solutions, AI innovations, and transformative experiences to
-            startups, enterprises, and visionary companies worldwide.
+          <p className="font-body text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
+            We craft innovative digital experiences that drive growth, enhance user engagement, and deliver measurable
+            results for forward-thinking businesses.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button
-              onClick={() => scrollToSection("contact")}
-              className="bg-white text-black hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105"
+              size="lg"
+              className="font-body font-medium text-lg px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Book a Demo →
+              Start Your Project
             </Button>
             <Button
-              onClick={() => scrollToSection("services")}
               variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105"
+              size="lg"
+              className="font-body font-medium text-lg px-8 py-4 border-2 border-slate-300 hover:border-slate-400 transition-all duration-300 bg-transparent"
             >
-              Explore Services →
+              View Our Work
             </Button>
           </div>
-        </div>
 
-        {/* Trust Indicators */}
-        <div className="mt-20">
-          <p className="text-sm text-gray-400 mb-8 tracking-wider uppercase">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
-              AI FOR THE ENTERPRISE
-            </span>
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 opacity-60">
-            <div className="text-2xl font-bold text-white">Meta</div>
-            <div className="text-2xl font-bold text-white">OpenAI</div>
-            <div className="text-2xl font-bold text-white">Microsoft</div>
-            <div className="text-2xl font-bold text-white">Google</div>
-            <div className="text-2xl font-bold text-white">Amazon</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="text-center">
+              <div className="font-display text-4xl font-bold text-blue-600 mb-2">150+</div>
+              <div className="font-body text-slate-600 font-medium">Projects Completed</div>
+            </div>
+            <div className="text-center">
+              <div className="font-display text-4xl font-bold text-indigo-600 mb-2">98%</div>
+              <div className="font-body text-slate-600 font-medium">Client Satisfaction</div>
+            </div>
+            <div className="text-center">
+              <div className="font-display text-4xl font-bold text-purple-600 mb-2">5+</div>
+              <div className="font-body text-slate-600 font-medium">Years Experience</div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Floating elements */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200 rounded-full opacity-60 animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-16 h-16 bg-indigo-200 rounded-full opacity-60 animate-pulse delay-1000" />
+      <div className="absolute top-1/2 left-20 w-12 h-12 bg-purple-200 rounded-full opacity-60 animate-pulse delay-500" />
     </section>
   )
 }
