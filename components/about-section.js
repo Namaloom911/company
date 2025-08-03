@@ -1,80 +1,68 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { Users, Award, Globe, Zap } from "lucide-react"
-
-const stats = [
-  { icon: Users, label: "Happy Clients", value: "500+", gradient: "from-blue-500 to-cyan-500" },
-  { icon: Award, label: "Projects Completed", value: "1000+", gradient: "from-purple-500 to-pink-500" },
-  { icon: Globe, label: "Countries Served", value: "25+", gradient: "from-green-500 to-emerald-500" },
-  { icon: Zap, label: "Years Experience", value: "8+", gradient: "from-orange-500 to-red-500" },
-]
+import { CheckCircle, Award, Users, Clock } from "lucide-react"
 
 export function AboutSection() {
+  const stats = [
+    { icon: <CheckCircle className="w-6 h-6" />, number: "150+", label: "Projects Completed" },
+    { icon: <Users className="w-6 h-6" />, number: "50+", label: "Happy Clients" },
+    { icon: <Award className="w-6 h-6" />, number: "5+", label: "Years Experience" },
+    { icon: <Clock className="w-6 h-6" />, number: "24/7", label: "Support Available" },
+  ]
+
   return (
-    <section id="about" className="py-24 bg-gray-950">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
+    <section id="about" className="py-20 bg-slate-50">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Crafting Digital
-              </span>
-              <br />
-              <span className="text-white">Excellence</span>
-            </h2>
-            <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
-              <p>
-                At Digivelopers, we're not just developers – we're digital architects who transform ambitious visions
-                into reality. Our journey began with a simple belief: technology should empower businesses to achieve
-                the extraordinary.
-              </p>
-              <p>
-                Today, we're a team of passionate innovators, designers, and strategists who combine cutting-edge
-                technology with human-centered design to create solutions that don't just meet expectations – they
-                exceed them.
-              </p>
-              <p>
-                From startups disrupting industries to enterprises scaling globally, we've been the trusted partner
-                behind some of the most successful digital transformations of the past decade.
-              </p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-900 mb-6">About Digivelopers</h2>
+            <p className="font-body text-lg text-slate-600 mb-6 leading-relaxed">
+              We are a team of passionate developers, designers, and digital strategists dedicated to creating
+              exceptional digital experiences. Our mission is to help businesses transform their ideas into powerful
+              digital solutions that drive growth and success.
+            </p>
+            <p className="font-body text-lg text-slate-600 mb-8 leading-relaxed">
+              With years of experience in web development, mobile apps, and digital strategy, we combine technical
+              expertise with creative vision to deliver results that exceed expectations.
+            </p>
+
+            <div className="grid grid-cols-2 gap-6">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                    {stat.icon}
+                  </div>
+                  <div>
+                    <div className="font-display text-2xl font-bold text-slate-900">{stat.number}</div>
+                    <div className="font-body text-sm text-slate-600">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-6">
-            {stats.map((stat, index) => (
-              <Card
-                key={index}
-                className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:scale-105 backdrop-blur-sm group"
-              >
-                <CardContent className="p-6 text-center">
-                  <div
-                    className={`w-16 h-16 rounded-full bg-gradient-to-r ${stat.gradient} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
-                  >
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div
-                    className={`text-3xl font-bold mb-2 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-400 font-medium">{stat.label}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Mission Statement */}
-        <div className="mt-20 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6">Our Mission</h3>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              To democratize access to world-class digital solutions by combining innovative technology, exceptional
-              design, and strategic thinking to help businesses of all sizes thrive in the digital age.
-            </p>
+          <div className="relative">
+            <Card className="p-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
+              <CardContent className="p-0">
+                <h3 className="font-display text-2xl font-semibold text-slate-900 mb-4">Why Choose Us?</h3>
+                <ul className="space-y-4">
+                  {[
+                    "Expert team with proven track record",
+                    "Modern technologies and best practices",
+                    "Agile development methodology",
+                    "Transparent communication throughout",
+                    "Post-launch support and maintenance",
+                    "Competitive pricing and flexible packages",
+                  ].map((item, index) => (
+                    <li key={index} className="font-body text-slate-700 flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

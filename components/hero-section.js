@@ -1,14 +1,30 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 
-export default function HeroSection() {
+export function HeroSection() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden"
+    >
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 opacity-20 blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-15 blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full bg-gradient-to-r from-green-400 via-blue-400 to-purple-500 opacity-10 blur-3xl animate-pulse delay-2000"></div>
+      </div>
 
       <div className="container mx-auto px-4 py-20 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-6 leading-tight">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-6 leading-tight text-balance">
             Digital Solutions
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
               That Transform
@@ -22,12 +38,14 @@ export default function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button
+              onClick={() => scrollToSection("contact")}
               size="lg"
               className="font-body font-medium text-lg px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Start Your Project
             </Button>
             <Button
+              onClick={() => scrollToSection("services")}
               variant="outline"
               size="lg"
               className="font-body font-medium text-lg px-8 py-4 border-2 border-slate-300 hover:border-slate-400 transition-all duration-300 bg-transparent"

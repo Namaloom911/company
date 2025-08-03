@@ -1,7 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { ArrowUp } from "lucide-react"
+import { Github, Twitter, Linkedin, Mail } from "lucide-react"
 
 export function Footer() {
   const scrollToSection = (sectionId) => {
@@ -11,95 +10,81 @@ export function Footer() {
     }
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
   return (
-    <footer className="bg-black border-t border-gray-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
-              Digivelopers
-            </div>
-            <p className="text-gray-300 mb-6 max-w-md">
-              Transforming visions into digital reality through innovative technology, exceptional design, and strategic
-              thinking.
+    <footer className="bg-slate-900 text-white py-16">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h3 className="font-display text-2xl font-bold mb-4">Digivelopers</h3>
+            <p className="font-body text-slate-300 mb-6 leading-relaxed">
+              Creating exceptional digital experiences that drive growth and success for businesses worldwide.
             </p>
             <div className="flex space-x-4">
-              <Button
-                variant="outline"
-                size="sm"
-                className="border-gray-700 text-gray-300 hover:bg-white/10 bg-transparent"
+              <a
+                href="#"
+                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors"
               >
-                LinkedIn
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="border-gray-700 text-gray-300 hover:bg-white/10 bg-transparent"
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors"
               >
-                Twitter
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="border-gray-700 text-gray-300 hover:bg-white/10 bg-transparent"
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors"
               >
-                GitHub
-              </Button>
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
-          {/* Services */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Services</h3>
-            <ul className="space-y-2">
+            <h4 className="font-display text-lg font-semibold mb-4">Services</h4>
+            <ul className="font-body space-y-2">
               <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
+                <a href="#" className="text-slate-300 hover:text-white transition-colors">
                   Web Development
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  UI/UX Design
-                </button>
+                <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                  Mobile Apps
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  SEO Optimization
-                </button>
+                <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                  Digital Strategy
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  AI Consulting
-                </button>
+                <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                  UX/UI Design
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                  SEO & Analytics
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Company</h3>
-            <ul className="space-y-2">
+            <h4 className="font-display text-lg font-semibold mb-4">Company</h4>
+            <ul className="font-body space-y-2">
               <li>
                 <button
                   onClick={() => scrollToSection("about")}
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-slate-300 hover:text-white transition-colors"
                 >
                   About Us
                 </button>
@@ -107,37 +92,45 @@ export function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection("testimonials")}
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-slate-300 hover:text-white transition-colors"
                 >
                   Testimonials
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("contact")}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Contact
-                </button>
+                <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                  Careers
+                </a>
               </li>
               <li>
-                <button className="text-gray-300 hover:text-white transition-colors">Privacy Policy</button>
+                <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-slate-300 hover:text-white transition-colors">
+                  Privacy Policy
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display text-lg font-semibold mb-4">Contact</h4>
+            <ul className="font-body space-y-2 text-slate-300">
+              <li>hello@digivelopers.com</li>
+              <li>+1 (555) 123-4567</li>
+              <li>
+                123 Digital Street
+                <br />
+                Tech City, TC 12345
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">© 2024 Digivelopers. All rights reserved.</p>
-          <Button
-            onClick={scrollToTop}
-            variant="outline"
-            size="sm"
-            className="border-gray-700 text-gray-300 hover:bg-white/10 mt-4 sm:mt-0 bg-transparent"
-          >
-            <ArrowUp className="w-4 h-4 mr-2" />
-            Back to Top
-          </Button>
+        <div className="border-t border-slate-800 mt-12 pt-8 text-center">
+          <p className="font-body text-slate-400">© 2024 Digivelopers. All rights reserved.</p>
         </div>
       </div>
     </footer>

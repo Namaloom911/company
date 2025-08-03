@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -77,18 +75,13 @@
   }
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-      "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   h1,
@@ -97,24 +90,23 @@
   h4,
   h5,
   h6 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-family: var(--font-playfair);
     font-weight: 600;
     line-height: 1.2;
-  }
-
-  .font-display {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-  }
-
-  .font-body {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-      "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .font-display {
+    font-family: var(--font-playfair);
+  }
+
+  .font-body {
+    font-family: var(--font-inter);
   }
 }
 
@@ -138,60 +130,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-/* Gradient backgrounds */
-.gradient-bg {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.gradient-border {
-  position: relative;
-  background: #000;
-  border-radius: 12px;
-}
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-  border-radius: inherit;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-}
-
-/* Animated gradient rings */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes gradient-shift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.gradient-ring {
-  position: absolute;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, #a855f7, #ec4899, #3b82f6, #10b981, #f59e0b, #a855f7);
-  animation: rotate 20s linear infinite;
-  filter: blur(2px);
-}
-
-.gradient-ring-slow {
-  animation: rotate 30s linear infinite reverse;
 }
 
 /* Custom animations */
@@ -250,64 +188,25 @@
   animation: spin-slow 20s linear infinite;
 }
 
-.delay-200 {
-  animation-delay: 200ms;
-  animation-fill-mode: both;
-}
-
-.delay-400 {
-  animation-delay: 400ms;
-  animation-fill-mode: both;
-}
-
-.delay-600 {
-  animation-delay: 600ms;
-  animation-fill-mode: both;
-}
-
-.delay-800 {
-  animation-delay: 800ms;
-  animation-fill-mode: both;
-}
-
-.delay-1000 {
-  animation-delay: 1s;
-  animation-fill-mode: both;
-}
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar for dark theme */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: hsl(var(--muted));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #a855f7, #ec4899);
+  background: hsl(var(--border));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #9333ea, #db2777);
-}
-
-/* Glassmorphism effect */
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.glass-dark {
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: hsl(var(--muted-foreground));
 }
