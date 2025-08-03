@@ -7,6 +7,7 @@ export const metadata = {
   title: "Digivelopers - AI-Powered Digital Solutions",
   description:
     "Transform your digital presence with cutting-edge AI automation, web development, and digital marketing solutions.",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({ children }) {
